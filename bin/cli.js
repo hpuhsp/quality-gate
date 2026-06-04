@@ -16,8 +16,17 @@ const genTests = require(path.join(LIB, 'checkers', 'gen-tests'))
 const preCommit = require(path.join(LIB, 'hooks', 'pre-commit'))
 const prePush = require(path.join(LIB, 'hooks', 'pre-push'))
 
-const cmd = process.argv[2] || 'help'
+let cmd = process.argv[2] || 'help'
 const cmdArg = process.argv[3] || null
+
+// Standard flags
+if (cmd === '--version' || cmd === '-v') {
+  console.log(pkg.version)
+  process.exit(0)
+}
+if (cmd === '--help' || cmd === '-h') {
+  cmd = 'help'
+}
 
 async function main() {
   switch (cmd) {
