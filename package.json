@@ -1,6 +1,6 @@
 {
   "name": "@company/quality-gate",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "scripts": {
     "postinstall": "echo ''; echo '╔══════════════════════════════╗'; echo '║  quality-gate installed!     ║'; echo '║  Run: quality-gate setup     ║'; echo '╚══════════════════════════════╝'; echo ''"
   },
