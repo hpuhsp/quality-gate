@@ -1,6 +1,9 @@
 {
   "name": "@company/quality-gate",
-  "version": "1.0.0",
+  "version": "1.2.0",
+  "scripts": {
+    "postinstall": "echo ''; echo '╔══════════════════════════════╗'; echo '║  quality-gate installed!     ║'; echo '║  Run: quality-gate setup     ║'; echo '╚══════════════════════════════╝'; echo ''"
+  },
   "description": "Shift-Left Local Quality Gate — pre-commit & pre-push hooks for multi-language projects",
   "bin": {
     "quality-gate": "./bin/cli.js"
