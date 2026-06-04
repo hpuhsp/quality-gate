@@ -1,0 +1,28 @@
+# quality-gate default configuration
+# Override via ~/.quality-gate/config.yml or QG_REMOTE_REPO
+
+# Pre-commit (runs on git commit)
+preCommit:
+  secretScan: true
+  autoFormat: true
+
+# Pre-push (runs on git push)
+prePush:
+  runTests: true
+  minCoverage: 60
+  maxDuration: 120
+
+# Checker-specific settings
+checkers:
+  secretScan:
+    blockOnCritical: true
+    blockOnHigh: false
+  format:
+    kotlin: ktlint
+    java: google-java-format
+    javascript: prettier
+
+# Remote config repo (shared team config)
+# Set QG_REMOTE_REPO env var or uncomment below:
+# remote: https://gitlab.com/ci/shared-pipeline.git
+# remoteRef: main
