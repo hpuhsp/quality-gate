@@ -35,18 +35,26 @@ async function main() {
     case 'enable':      return enable.run()
     case 'disable':     return disable.run()
     case 'status':      return status.run()
-    case 'gen-tests':   return genTests.run(cmdArg)
+    case 'tool':
+      if (cmdArg === 'gen-tests') return genTests.run(process.argv[4] || null)
+      console.log(`quality-gate tool — Optional tools (no API calls in gates)
+
+  tool gen-tests [file]   AI-generate test code (needs ANTHROPIC_API_KEY)
+      `)
+      return
+    case 'gen-tests':   // Backward compat, redirect to tool
+      return genTests.run(cmdArg)
     case 'pre-commit':  return preCommit.run()
     case 'pre-push':    return prePush.run()
     default:
       console.log(`quality-gate v${pkg.version} — Shift-Left Quality Gates
 
-  setup       First-run wizard: API key, test preferences
+  setup       First-run wizard
   update      Update to latest version
-  enable      Activate hooks for current repo (4 gates)
+  enable      Activate 4-gate pre-commit hook
   disable     Deactivate hooks
-  status      Show hook status and active config
-  gen-tests   AI-generate unit tests for changed code
+  status      Show status and project detection
+  tool        Optional tools (test generation, etc.)
   `)
   }
 }
